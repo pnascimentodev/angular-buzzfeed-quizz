@@ -22,6 +22,10 @@ Projeto desenvolvido durante o bootcamp Decola Tech Avanade 2025, onde criamos u
 ## 🎨 Preview
 ![Preview do Projeto](./public/assets/preview.png)
 
+## 🌐​ Vercel
+[Link do Projeto](https://angular-buzzfeed-quizz-indol.vercel.app/)
+
+
 ## 🔧 Instalação
 ```bash
 # Clone este repositório    
