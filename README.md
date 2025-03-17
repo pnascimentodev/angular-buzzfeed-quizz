@@ -20,11 +20,11 @@ Projeto desenvolvido durante o bootcamp Decola Tech Avanade 2025, onde criamos u
 - Interface moderna e amigável
 
 ## 🎨 Preview
-![Preview do Projeto](./assets/preview.png)
+![Preview do Projeto](./public/assets/preview.png)
 
 ## 🔧 Instalação
 ```bash
-# Clone este repositório
+# Clone este repositório    
 git clone https://github.com/pnascimentodev/angular-buzzfeed-quizz.git
 
 # Acesse a pasta do projeto
