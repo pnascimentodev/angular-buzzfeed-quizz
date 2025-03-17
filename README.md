@@ -1,59 +1,75 @@
-# MyAngularApp
+# 🎯 Clone do BuzzFeed - Decola Tech Avanade 2025
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.3.
+## 📝 Descrição
+Projeto desenvolvido durante o bootcamp Decola Tech Avanade 2025, onde criamos um clone do BuzzFeed utilizando Angular. O quiz "Você seria um Gato ou um Cachorro?" demonstra o uso de componentes, data binding, e design responsivo em Angular.
 
-## Development server
+## 🚀 Tecnologias Utilizadas
+- Angular 17
+- TypeScript
+- HTML5
+- CSS3
+- Git
 
-To start a local development server, run:
+## ✨ Funcionalidades
+- Quiz interativo com 10 perguntas
+- 4 opções de resposta para cada pergunta
+- Sistema de pontuação
+- Resultado personalizado (Gato ou Cachorro)
+- Design responsivo para todos os dispositivos
+- Animações suaves
+- Interface moderna e amigável
 
+## 🎨 Preview
+![Preview do Projeto](./assets/preview.png)
+
+## 🔧 Instalação
 ```bash
+# Clone este repositório
+git clone https://github.com/pnascimentodev/angular-buzzfeed-quizz.git
+
+# Acesse a pasta do projeto
+cd angular-buzzfeed-quizz
+
+# Instale as dependências
+npm install
+
+# Execute a aplicação
 ng serve
+
+# O servidor iniciará na porta:4200 - acesse http://localhost:4200
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+## 📚 Estrutura do Projeto
+```
+src/
+├── app/
+│   ├── quiz/
+│   │   ├── quiz.component.ts
+│   │   ├── quiz.component.html
+│   │   └── quiz.component.css
+│   ├── app.component.ts
+│   └── ...
+├── assets/
+│   ├── gato.jpg
+│   └── cachorro.jpg
+└── ...
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 🤝 Contribuindo
+1. Fork o projeto
+2. Crie sua Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+4. Push para a Branch (`git push origin feature/AmazingFeature`)
+5. Abra um Pull Request
 
-```bash
-ng generate --help
-```
+## 📝 Licença
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
-## Building
+## ✍️ Autor
+Priscila Nascimento
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## 🎁 Agradecimentos
+- DIO
+- Avanade
+- Instrutores do bootcamp
+- Comunidade Angular

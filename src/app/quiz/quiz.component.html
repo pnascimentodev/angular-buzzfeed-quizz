@@ -1,0 +1,44 @@
+<div class="quiz-container">
+  <h1>Você seria um Gato ou um Cachorro? 🐱🐶</h1>
+
+  <div *ngIf="!resultado" class="pergunta-container">
+    <h2>Pergunta {{ perguntaAtual + 1 }} de {{ perguntas.length }}</h2>
+    <p class="questao">{{ perguntas[perguntaAtual].questao }}</p>
+
+    <div class="respostas-grid">
+      <button 
+        *ngFor="let resposta of perguntas[perguntaAtual].respostas"
+        (click)="selecionarResposta(resposta.pontos)"
+        class="resposta-btn">
+        {{ resposta.texto }}
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="resultado" class="resultado-container">
+    <h2>Resultado</h2>
+    <div class="resultado-content">
+      <img [src]="resultado === 'gato' ? './assets/gato.jpg' : './assets/cachorro.jpg'" 
+           [alt]="resultado === 'gato' ? 'Gato' : 'Cachorro'"
+           class="resultado-img">
+      
+      <h3>Você seria um {{ resultado === 'gato' ? 'Gato! 🐱' : 'Cachorro! 🐶' }}</h3>
+      
+      <p *ngIf="resultado === 'gato'">
+        Você é independente, observador e sofisticado! Como um gato, você valoriza seu espaço pessoal,
+        é seletivo com suas amizades e tem um charme único. Sua natureza curiosa e elegante faz de você
+        alguém especial!
+      </p>
+      
+      <p *ngIf="resultado === 'cachorro'">
+        Você é leal, sociável e cheio de energia! Como um cachorro, você adora estar com pessoas,
+        é sempre animado e está sempre pronto para uma nova aventura. Sua natureza amorosa e brincalhona
+        faz de você alguém especial!
+      </p>
+
+      <button (click)="reiniciarQuiz()" class="reiniciar-btn">
+        Fazer o teste novamente
+      </button>
+    </div>
+  </div>
+</div> 
