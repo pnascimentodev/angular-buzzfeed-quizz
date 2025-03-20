@@ -1,12 +1,24 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-quiz',
   templateUrl: './quiz.component.html',
   styleUrls: ['./quiz.component.css'],
   standalone: true,
-  imports: [CommonModule]
+  imports: [CommonModule],
+  animations: [
+    trigger('fadeInOut', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('400ms ease-in', style({ opacity: 1 }))
+      ]),
+      transition(':leave', [
+        animate('300ms ease-out', style({ opacity: 0 }))
+      ])
+    ])
+  ]
 })
 export class QuizComponent {
   perguntas = [
@@ -105,27 +117,63 @@ export class QuizComponent {
   perguntaAtual = 0;
   respostas: string[] = [];
   resultado: string | null = null;
+  animando = false;
+  pontuacaoGato = 0;
+  pontuacaoCachorro = 0;
+  
+  // Caminhos para as imagens
+  imagemGato = './assets/gato.jpg';
+  imagemCachorro = './assets/cachorro.jpg';
 
   selecionarResposta(pontos: string) {
+    if (this.animando) return;
+    
+    this.animando = true;
     this.respostas.push(pontos);
     
-    if (this.perguntaAtual < this.perguntas.length - 1) {
-      this.perguntaAtual++;
-    } else {
-      this.calcularResultado();
-    }
+    setTimeout(() => {
+      if (this.perguntaAtual < this.perguntas.length - 1) {
+        this.perguntaAtual++;
+      } else {
+        this.calcularResultado();
+      }
+      this.animando = false;
+    }, 300);
   }
 
   calcularResultado() {
-    const gatos = this.respostas.filter(r => r === 'gato').length;
-    const cachorros = this.respostas.filter(r => r === 'cachorro').length;
-    
-    this.resultado = gatos > cachorros ? 'gato' : 'cachorro';
+    const contagem = this.respostas.reduce((acc, pontos) => {
+      acc[pontos] = (acc[pontos] || 0) + 1;
+      return acc;
+    }, {} as Record<string, number>);
+
+    // Garantindo que ambas as contagens existam
+    this.pontuacaoGato = contagem['gato'] || 0;
+    this.pontuacaoCachorro = contagem['cachorro'] || 0;
+
+    console.log('Contagem de pontos:', { gato: this.pontuacaoGato, cachorro: this.pontuacaoCachorro });
+
+    // Verificando qual resultado tem mais pontos (ou um empate aleatório)
+    if (this.pontuacaoGato > this.pontuacaoCachorro) {
+      this.resultado = 'gato';
+    } else if (this.pontuacaoGato < this.pontuacaoCachorro) {
+      this.resultado = 'cachorro';
+    } else {
+      // Em caso de empate, escolhe aleatoriamente
+      this.resultado = Math.random() < 0.5 ? 'gato' : 'cachorro';
+    }
   }
 
   reiniciarQuiz() {
-    this.perguntaAtual = 0;
-    this.respostas = [];
-    this.resultado = null;
+    this.animando = true;
+    
+    setTimeout(() => {
+      this.perguntaAtual = 0;
+      this.respostas = [];
+      this.resultado = null;
+      this.pontuacaoGato = 0;
+      this.pontuacaoCachorro = 0;
+      this.animando = false;
+    }, 300);
   }
 } 

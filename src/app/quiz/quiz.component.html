@@ -1,36 +1,38 @@
-<div class="quiz-container">
-  <h1>Você seria um Gato ou um Cachorro? 🐱🐶</h1>
+<div class="quiz-container fade-in page-transition">
+  <h1><span class="gradient-text">Você seria um Gato ou um Cachorro?</span> 🐱🐶</h1>
 
-  <div *ngIf="!resultado" class="pergunta-container">
+  <div *ngIf="!resultado" class="pergunta-container slide-in">
     <h2>Pergunta {{ perguntaAtual + 1 }} de {{ perguntas.length }}</h2>
     <p class="questao">{{ perguntas[perguntaAtual].questao }}</p>
 
     <div class="respostas-grid">
       <button 
-        *ngFor="let resposta of perguntas[perguntaAtual].respostas"
+        *ngFor="let resposta of perguntas[perguntaAtual].respostas; let i = index"
         (click)="selecionarResposta(resposta.pontos)"
-        class="resposta-btn">
+        class="resposta-btn"
+        [ngClass]="i % 2 === 0 ? 'slide-right' : 'slide-left'"
+        [style.--index]="i">
         {{ resposta.texto }}
       </button>
     </div>
   </div>
 
-  <div *ngIf="resultado" class="resultado-container">
+  <div *ngIf="resultado" class="resultado-container page-transition">
     <h2>Resultado</h2>
     <div class="resultado-content">
-      <img [src]="resultado === 'gato' ? './assets/gato.jpg' : './assets/cachorro.jpg'" 
+      <img [src]="resultado === 'gato' ? imagemGato : imagemCachorro" 
            [alt]="resultado === 'gato' ? 'Gato' : 'Cachorro'"
            class="resultado-img">
       
-      <h3>Você seria um {{ resultado === 'gato' ? 'Gato! 🐱' : 'Cachorro! 🐶' }}</h3>
+      <h3><span class="gradient-text">Você seria um</span> {{ resultado === 'gato' ? 'Gato! 🐱' : 'Cachorro! 🐶' }}</h3>
       
-      <p *ngIf="resultado === 'gato'">
+      <p *ngIf="resultado === 'gato'" class="slide-in">
         Você é independente, observador e sofisticado! Como um gato, você valoriza seu espaço pessoal,
         é seletivo com suas amizades e tem um charme único. Sua natureza curiosa e elegante faz de você
         alguém especial!
       </p>
       
-      <p *ngIf="resultado === 'cachorro'">
+      <p *ngIf="resultado === 'cachorro'" class="slide-in">
         Você é leal, sociável e cheio de energia! Como um cachorro, você adora estar com pessoas,
         é sempre animado e está sempre pronto para uma nova aventura. Sua natureza amorosa e brincalhona
         faz de você alguém especial!
